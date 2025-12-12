@@ -299,74 +299,27 @@ Forever yours,
 
   animatedPoems.forEach(p => observer2.observe(p));
 </script>
+  <div class="container mt-5">
+    <div class="card shadow-lg" style="border-radius: 14px; overflow:hidden;">
+      <div class="card-body text-center p-4">
+        <h5 class="card-title mb-3">A Small Message</h5>
+        <p class="card-text">Click the button below for a little surprise.</p>
+        <button class="btn btn-primary px-4" onclick="loveMessage()">Open Message</button>
+      </div>
+    </div>
+  </div>
+
   <script>
-  // Show sequential dialogs in a clean, non-blocking way
-  function loveMessage() {
-    // Small timeout so the button's :active state can finish visually
-    setTimeout(() => {
-      alert("Kasthuri, I love you more than words can ever hold.");
-
-      // Ask for confirmation
-      const reply = confirm("Kasthuri, do you love me too?");
-
+    function loveMessage() {
+      alert("I love you so much.");
+      const reply = confirm("Do you love me too?");
       if (reply) {
-        alert("Your yes means the world to me, Kasthuri.");
-        burstHearts(); // visual feedback for yes
+        alert("That means everything to me.");
       } else {
-        alert("Even then, Kasthuri, my heart remains yours.");
-        // Optionally still show a softer heart burst
-        burstHearts(true);
+        alert("Even then, my heart still chooses you.");
       }
-    }, 150);
-  }
-
-  // Creates a short-lived burst of hearts inside the love card
-  function burstHearts(soft = false) {
-    const card = document.querySelector('.love-card .card-body');
-    if (!card) return;
-
-    const count = soft ? 6 : 12;
-    for (let i = 0; i < count; i++) {
-      const h = document.createElement('div');
-      h.className = 'temp-heart';
-      h.style.left = `${30 + Math.random() * 40}%`;
-      h.style.top = `${60 + Math.random() * 20}%`;
-      h.style.opacity = soft ? 0.7 : 1;
-      card.appendChild(h);
-
-      // Remove after animation ends
-      setTimeout(() => {
-        h.remove();
-      }, 2200);
     }
-  }
-
-  // Add minimal styles for the temporary hearts (if not already present)
-  (function injectTempHeartStyles(){
-    if (document.getElementById('temp-heart-styles')) return;
-    const s = document.createElement('style');
-    s.id = 'temp-heart-styles';
-    s.textContent = `
-      .temp-heart {
-        position: absolute;
-        width: 18px;
-        height: 18px;
-        background: rgba(255,255,255,0.95);
-        transform-origin: center;
-        border-radius: 4px;
-        filter: drop-shadow(0 4px 8px rgba(0,0,0,0.12));
-        animation: tempHeartMove 2s forwards ease-out;
-        clip-path: polygon(50% 0%, 61% 8%, 70% 20%, 75% 32%, 68% 50%, 50% 66%, 32% 50%, 25% 32%, 30% 20%, 39% 8%);
-      }
-      @keyframes tempHeartMove {
-        0% { transform: translateY(0) scale(0.9) rotate(0deg); opacity: 1; }
-        40% { transform: translateY(-40px) scale(1.15) rotate(-6deg); opacity: 1; }
-        100% { transform: translateY(-120px) scale(0.85) rotate(8deg); opacity: 0; }
-      }
-    `;
-    document.head.appendChild(s);
-  })();
-</script>
+  </script>
 
 
 </body>
